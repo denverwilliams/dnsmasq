@@ -4,7 +4,9 @@ COPY . /home/dhcpd
 
 RUN chmod +x /home/dhcpd/entrypoint.sh
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install dnsmasq 
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install dnsmasq freeipmi ipmitool openipmi lsof sipcalc
+
+COPY etc/default/* /etc/default/
 
 WORKDIR /home/dhcpd
 
@@ -13,4 +15,5 @@ EXPOSE 67/udp
 EXPOSE 68/udp
 
 # default command
-ENTRYPOINT ["/home/dhcpd/entrypoint.sh"]
+#ENTRYPOINT ["/home/dhcpd/entrypoint.sh"]
+CMD ["/bin/bash"]
