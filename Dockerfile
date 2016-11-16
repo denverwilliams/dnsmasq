@@ -2,7 +2,7 @@ FROM armhfbuild/debian
 
 COPY . /home/dhcpd
 
-RUN chmod +x /home/dhcpd/entrypoint.sh
+RUN chmod +x /home/dhcpd/dnsmasq.sh
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install dnsmasq freeipmi ipmitool openipmi lsof sipcalc tmux
 
